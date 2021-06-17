@@ -21,6 +21,18 @@ editor_options:
 .remark-slide-content {
     font-size: 32px;
 }
+
+.orange {
+  color: #FF8A65;
+  font-weight: bold;
+}
+
+.blue {
+  color: #64B5F6;
+  font-weight: bold;
+}
+
+
 </style>
 
 ```{r setup, include=FALSE}
@@ -33,7 +45,6 @@ options(htmltools.dir.version = FALSE)
 **Versionado de código y trabajo colaborativo**
 - ¿Qué es `git`?
 - ¿Cómo funciona?
-- Usos y beneficios
 - Ejemplo práctico con `git`
 - ¿Qué es un repositorio remoto?
 - Red social de programadores
@@ -73,6 +84,20 @@ options(htmltools.dir.version = FALSE)
 .pull-right[
 .center[![git branch](https://wac-cdn.atlassian.com/dam/jcr:389059a7-214c-46a3-bc52-7781b4730301/hero.svg?cdnVersion=1663)]
 ]
+
+---
+# git: ¿Cómo funciona?
+
+.pull-left[
+- Cada nodo es un `commit`
+- La serie .orange[naranja] representa la `branch main` o rama principal
+- La serie .blue[azul] representa ramas para desarrollar una prestación o funcionalidad de nuestro programa
+]
+
+.pull-right[
+![commit branch merge animation](images/commits-branch-merge.gif)
+]
+
 
 
 ---
