@@ -1,0 +1,86 @@
+---
+title: "Introducción al versionado de código y trabajo colaborativo"
+subtitle: "Seminarios MEDIA (CURE, UdelaR)"
+author: "Guzmán López  |  `r emo::ji('email')` guzmanlop@protonmail.com"
+date: "18 de junio de 2021"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    self_contained: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+editor_options: 
+  chunk_output_type: console
+---
+
+<style type="text/css">
+.remark-slide-content {
+    font-size: 32px;
+}
+</style>
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# Presentación
+
+.pull-left[
+**Versionado de código y trabajo colaborativo**
+- ¿Qué es `git`?
+- ¿Cómo funciona?
+- Usos y beneficios
+- Ejemplo práctico con `git`
+- ¿Qué es un repositorio remoto?
+- Red social de programadores
+- Ejemplo práctico con GitHub
+]
+
+.pull-right[
+.center[![xkcd caricature](https://imgs.xkcd.com/comics/git.png)]
+]
+
+---
+# ¿Qué es git?
+
+.pull-left[
+- Herramienta para coordinar el desarrollo de código colaborativo
+- Software para controlar versiones de archivos
+- Creado por Linus Torvalds `r emo::ji('backhand_index_pointing_right_medium_dark_skin_tone')` para desarrollar el kernel Linux
+- Es Software Libre (licencia GPLv2)
+]
+
+.pull-right[
+.center[![git logo](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/250px-Git-logo.svg.png)]
+
+.center[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/LinuxCon_Europe_Linus_Torvalds_05.jpg" style="width: 50%" alt="linus torvalds"/>]
+]
+
+---
+# git: ¿Cómo funciona?
+
+.pull-left[
+- Almacena estados o versiones de los archivos
+- Los estados están unidos por una relación de parentesco
+- Una serie de versiones es una rama o branch
+- Modelo de Hash trees `r emo::ji('locked')`
+]
+
+.pull-right[
+.center[![git branch](https://wac-cdn.atlassian.com/dam/jcr:389059a7-214c-46a3-bc52-7781b4730301/hero.svg?cdnVersion=1663)]
+]
+
+
+---
+# Crear repositorio remoto
+
+.pull-left[
+]
+
+.pull-right[
+.center[![github create new repository](images/github-create-new-repository.png)]
+]
