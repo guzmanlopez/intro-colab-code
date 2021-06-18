@@ -11,6 +11,7 @@ output:
     nature:
       highlightStyle: github
       highlightLines: true
+      highlightSpans: true
       countIncrementalSlides: false
       ratio: 16:9
 editor_options: 
@@ -19,7 +20,7 @@ editor_options:
 
 <style type="text/css">
 .remark-slide-content {
-    font-size: 32px;
+    font-size: 30px;
 }
 
 .orange {
@@ -62,7 +63,7 @@ options(htmltools.dir.version = FALSE)
 - Herramienta para coordinar el desarrollo de código colaborativo
 - Software para controlar versiones de archivos
 - Creado por Linus Torvalds `r emo::ji('backhand_index_pointing_right_medium_dark_skin_tone')` para desarrollar el kernel Linux
-- Es Software Libre (licencia GPLv2)
+- Es Software Libre, licencia GPLv2
 ]
 
 .pull-right[
@@ -91,14 +92,326 @@ options(htmltools.dir.version = FALSE)
 .pull-left[
 - Cada nodo es un `commit`
 - La serie .orange[naranja] representa la `branch main` o rama principal
-- La serie .blue[azul] representa ramas para desarrollar una prestación o funcionalidad de nuestro programa
+- La serie .blue[azul] representa ramas para desarrollar una funcionalidad de nuestro programa
 ]
 
 .pull-right[
 ![commit branch merge animation](images/commits-branch-merge.gif)
 ]
 
+---
+# Ejemplo práctico con git
 
+**Instalar `git`**
+
+.pull-left[
+
+```{bash, eval=FALSE}
+# Debian-based distros
+$ sudo apt install git
+
+# Arch-based distros
+$ sudo pacman -S git
+
+# RHEL-based distros
+$ sudo yum install git
+
+# Open-SUSE
+$ sudo zypper install git
+```
+]
+
+.pull-right[
+- MacOS
+```sh
+$ brew install git
+```
+
+- Microsoft Windows:
+  - Descargar ejecutable desde sitio oficial:
+  https://git-scm.com/download/win
+
+]
+---
+# Ejemplo práctico con git
+
+**Configurar git**
+
+```{bash, eval=FALSE}
+$ git config --global user.`name`  "Nina Miranda"
+$ git config --global user.`email` "tucorazon@donato.com"
+$ git config --global init.defaultBranch "main"
+```
+
+.pull-left[
+**Crear carpeta para proyecto e inicializar git**
+```{bash, eval=FALSE}
+$ mkdir nombre-proyecto
+$ cd nombre-proyecto
+$ `git init`
+```
+]
+
+.pull-right[
+.center[<image src="images/git-folder.png" alt="git folder" width="40%" image/>]
+]
+
+---
+# Ejemplo práctico con git
+
+.pull-left[
+**Crear proyecto en RStudio**
+
+- Archivo > Nuevo Proyecto...
+  - Directorio Existente > Crear Proyecto
+
+
+- Creación automática de:
+  - *nombre-proyecto.Rproj*
+  - *.gitignore*
+]
+
+.pull-right[
+.center[![rstudio new project](images/rstudio-new-project.png)]
+El archivo **_.gitignore_** sirve para definir todo lo que **no** queremos versionar
+]
+
+---
+# Ejemplo práctico con git
+
+.pull-left[
+**Agregar README desde RStudio**
+
+- Archivo > Nuevo Archivo
+  - Markdown File
+- El archivo **_README.md_** va a ser la carátula de nuestro proyecto
+- Contenido del archivo en formato Markdown `r emo::ji('backhand_index_pointing_down_medium_dark_skin_tone')`
+
+```sh
+# Nombre de proyecto
+```
+]
+
+.pull-right[.center[![rstudio new readme](images/rstudio-readme.png)]]
+
+
+---
+# Ejemplo práctico con git
+
+**git status** - Ver estado del árbol de trabajo
+
+```{bash, eval=FALSE}
+$ `git status`
+
+On branch `main`
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        README.md
+        nombre-proyecto.Rproj
+```
+
+---
+# Ejemplo práctico con git
+
+**git add** - Agregar contenido de archivos al índice
+
+```{bash, eval=FALSE}
+$ `git add` .gitignore README.md nombre-proyecto.Rproj
+$ git status
+
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+        new file:   README.md
+        new file:   nombre-proyecto.Rproj
+```
+
+---
+# Ejemplo práctico con git
+
+**git commit** - Grabar cambios al repositorio
+
+```{bash, eval=FALSE}
+$ `git commit` -m "first commit"
+[main (root-commit) 42ca9c7] first commit
+3 files changed, 18 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 nombre-proyecto.Rproj
+
+$ git status
+On branch main
+nothing to commit, working tree clean
+```
+
+---
+# Ejemplo práctico con git
+
+**git branch** - Listar, crear, o borrar ramas
+
+- Creamos una **branch** por funcionalidad a desarrollar
+
+.pull-left[
+```{bash, eval=FALSE}
+$ `git branch` load-data
+$ git branch --list
+  load-data
+`*` main
+```
+
+- La rama .orange[naranja] es `main`
+- La rama .blue[azul] es `load-data`
+]
+
+.pull-right[.center[![commit branch merge animation](images/branch.gif)]]
+
+---
+# Ejemplo práctico con git
+
+**git checkout** - Cambiar de rama
+
+.pull-left[
+```{bash, eval=FALSE}
+$ `git checkout` load-data
+Switched to branch 'load-data'
+```
+
+- La rama .orange[naranja] es `main`
+- La rama .blue[azul] es `load-data`
+]
+
+.pull-right[.center[![commit branch merge animation](images/branch.gif)]]
+
+---
+# Ejemplo práctico con git
+
+.pull-left[
+**Desarrollar en rama .blue[load-data]**
+
+- Agregar un Rscript para cargar datos
+  - Archivo > Nuevo Archivo > R Script
+- Crear carpeta **R/** para alojar código
+- Crear carpeta **data/** para alojar datos
+]
+
+.pull-right[![rstudio work in branch](images/rstudio-work-in-branch.png)]
+
+---
+# Ejemplo práctico con git
+
+**Miramos el estado del árbol de trabajo**
+
+```{bash, eval=FALSE}
+$ git status
+On branch load-data
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        R/
+        data/
+```
+
+--
+.center[**¿Versionamos los datos?**]
+.center[`r emo::ji('thinking')`]
+
+---
+# Ejemplo práctico con git
+
+**Uso de .gitignore**
+
+.pull-left[
+- Agregamos la carpeta **data**
+]
+.pull-right[![rstudio add data to gitignore](images/rstudio-data-to-gitgnore.png)]
+
+---
+# Ejemplo práctico con git
+
+**Miramos el estado del árbol de trabajo**
+
+```{bash, eval=FALSE}
+$ git status
+On branch load-data
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        R/
+```
+
+---
+# Ejemplo práctico con git
+
+**Agregar contenido + grabar cambios**
+
+```{bash, eval=FALSE}
+$ `git add` R/ .gitignore
+$ git status
+On branch load-data
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .gitignore
+        new file:   R/load_data.R
+
+$ `git commit` -m "load data pipeline"
+[load-data 4ba3a2f] load data pipeline
+ 2 files changed, 8 insertions(+)
+ create mode 100644 R/load_data.R
+```
+
+---
+# Ejemplo práctico con git
+
+**Seguimos el desarrollo en rama .blue[load-data]**
+
+.pull-left[
+- Agregamos un filtro a los datos
+]
+
+.pull-right[![rstudio add data to gitignore](images/rstudio-add-filter.png)]
+
+---
+# Ejemplo práctico con git
+
+**git diff** - Ver cambios entre commits
+
+.pull-left[
+
+```{bash, eval=FALSE}
+$ git diff
+```
+
+![rstudio add filter](images/rstudio-git-diff.png)
+
+]
+
+---
+# Ejemplo práctico con git
+
+**Repetimos proceso:**
+
+.pull-left[
+
+```{bash, eval=FALSE}
+$ git add R/load_data.R
+$ git commit -m "Filter to var1"
+[load-data 68607e9] Filter to var1
+ 1 file changed, 5 insertions(+)
+```
+]
+
+.pull-right[.center[![second commit animation](images/second-commit.gif)]]
 
 ---
 # Crear repositorio remoto
