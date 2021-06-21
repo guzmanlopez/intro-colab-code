@@ -7,7 +7,7 @@ output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts]
     lib_dir: libs
-    self_contained: false
+    self_contained: true
     nature:
       highlightStyle: github
       highlightLines: true
@@ -62,7 +62,7 @@ options(htmltools.dir.version = FALSE)
 .pull-left[
 - Herramienta para coordinar el desarrollo de código colaborativo
 - Software para controlar versiones de archivos
-- Creado por Linus Torvalds `r emo::ji('backhand_index_pointing_right_medium_dark_skin_tone')` para desarrollar el kernel Linux
+- Creado por Linus Torvalds para `r emo::ji('backhand_index_pointing_right_medium_dark_skin_tone')` desarrollar el kernel Linux
 - Es Software Libre, licencia GPLv2
 ]
 
